@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart'
+
 void main() {
   runApp(const MyApp());
 }
@@ -9,7 +11,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'Flutter Demo',
-      home: Text('Hello World'),
+      home: Scaffold(
+        appBar: AppBar(titile: Text('Google Fonts')),
+        body: Center(child: Text('Hello World')),
+      ),
     );
   }
 }
