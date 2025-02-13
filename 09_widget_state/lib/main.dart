@@ -60,24 +60,99 @@ class _MyHomePageState extends State<MyHomePage> {
             width: 300,
             height: 380,
             color: Colors.white,
-            child: Center(
-              child: RichText(
-                text: TextSpan(children: [
-                  TextSpan(
-                      text: 'Hello',
-                      style: Theme.of(context).textTheme.bodyLarge),
-                  TextSpan(text: ' '),
-                  TextSpan(
-                      text: 'Flutter',
-                      style: Theme.of(context).textTheme.bodyMedium),
-                  TextSpan(text: ' '),
-                ]),
-              ),
-            )),
+            child: _buildContainer(context)),
       ),
     );
   }
 
+  // Swift와는 다르게 뷰에서 명령문을 실행할 수 있음!!
+  Widget _buildContainer(BuildContext context) {
+    // MediaQuery.of(context).size.width: 현재 화면의 너비를 가져옴
+    var screenWidth = MediaQuery.of(context).size.width;
+    print(screenWidth);
+    return screenWidth > 600
+        ? _buildWideContainers()
+        : _buildNarrowContainers();
+  }
+
+  Widget _buildWideContainers() {
+    return Row(
+      children: [
+        Expanded(
+          child: Container(
+            color: Colors.red,
+            child: Center(
+              child: Text(
+                'Red',
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+            ),
+          ),
+        ),
+        Expanded(
+          child: Container(
+            color: Colors.green,
+            child: Center(
+              child: Text(
+                'Green',
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+            ),
+          ),
+        ),
+        Expanded(
+          child: Container(
+            color: Colors.blue,
+            child: Center(
+              child: Text(
+                'Blue',
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildNarrowContainers() {
+    return Column(
+      children: [
+        Container(
+          color: Colors.red,
+          height: 100,
+          child: Center(
+            child: Text(
+              'Red',
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+          ),
+        ),
+        Container(
+          color: Colors.green,
+          height: 100,
+          child: Center(
+            child: Text(
+              'Green',
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+          ),
+        ),
+        Container(
+          color: Colors.blue,
+          height: 100,
+          child: Center(
+            child: Text(
+              'Blue',
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  // _buildRow 함수: Row 위젯을 생성하는 함수
   Widget _buildRow() {
     return Row(
       children: [
