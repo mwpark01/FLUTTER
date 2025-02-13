@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -55,24 +56,39 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       backgroundColor: Colors.grey,
       // body 속성에 Center 위젯을 사용하여 화면 중앙에 컨텐츠를 배치
-      body: Center(
-        child: Container(
-            width: 300,
-            height: 380,
-            color: Colors.white,
-            child: _buildContainer(context)),
-      ),
+      // body: Center(
+      //   child: Container(
+      //       width: 300,
+      //       height: 380,
+      //       color: Colors.white,
+      //       child: _buildContainer(context)),
+      // ),
+      body: _buildContainer(context),
     );
   }
 
   // Swift와는 다르게 뷰에서 명령문을 실행할 수 있음!!
   Widget _buildContainer(BuildContext context) {
-    // MediaQuery.of(context).size.width: 현재 화면의 너비를 가져옴
-    var screenWidth = MediaQuery.of(context).size.width;
-    print(screenWidth);
-    return screenWidth > 600
-        ? _buildWideContainers()
-        : _buildNarrowContainers();
+    // // MediaQuery.of(context).size.width: 현재 화면의 너비를 가져옴
+    // var screenWidth = MediaQuery.of(context).size.width;
+    // print(screenWidth);
+    // return screenWidth > 600
+    //     ? _buildWideContainers()
+    //     : _buildNarrowContainers();
+    
+    // LayoutBuilder 위젯: 부모 위젯의 크기에 따라 자식 위젯의 레이아웃을 동적으로 변경
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        if (kDebugMode) {
+          debugPrint('constraints.maxWidth: ${constraints.maxWidth}');
+        }
+        if (constraints.maxWidth > 600) {
+          return _buildWideContainers();
+        } else {
+          return _buildNarrowContainers();
+        }
+      },
+    );
   }
 
   Widget _buildWideContainers() {
