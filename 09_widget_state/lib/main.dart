@@ -55,15 +55,14 @@ class _MyHomePageState extends State<MyHomePage> {
             width: 300,
             height: 380,
             color: Colors.white,
-            child: Column(
-              children: [
-                _buildRow(),
-                SizedBox(height: 10),
-                _buildRow(),
-                SizedBox(height: 10),
-                _buildRow(),
-              ],
-            )),
+            // ListView.builder 위젯: 동적 리스트를 생성하는 위젯
+            child: ListView.builder(
+              itemCount: 30,
+              itemBuilder: (context, index) {
+                return _buildListItem();
+              },
+            )
+            ),
       ),
     );
   }
@@ -85,6 +84,17 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ],
+    );
+  }
+
+  // _buildListItem 함수: ListTile 위젯을 생성하는 함수
+  Widget _buildListItem() {
+    return ListTile(
+      title: Text('Hello, World!',
+          style: TextStyle(fontSize: 20, color: Colors.indigo)),
+      subtitle: Text('Dart & Flutter',
+          style: TextStyle(fontSize: 16, color: Colors.deepPurple)),
+      leading: Image.network('https://picsum.photos/120/60'),
     );
   }
 }
