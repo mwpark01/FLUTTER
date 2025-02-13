@@ -52,25 +52,39 @@ class _MyHomePageState extends State<MyHomePage> {
       // body 속성에 Center 위젯을 사용하여 화면 중앙에 컨텐츠를 배치
       body: Center(
         child: Container(
-            width: 200,
-            height: 180,
+            width: 300,
+            height: 380,
             color: Colors.white,
             child: Column(
               children: [
-                // 선언한 container의 크기에 맞게 이미지 크기 조정
-                // 다른 경우 공사장 띠 모양이 사진에 표시됨
-                Image.network('https://picsum.photos/200/100'),
-                // Spacer()와 유사, 정적으로 높이를 지정
-                SizedBox(
-                  height: 10,
-                ),
-                Text('Hello, World!',
-                    style: TextStyle(fontSize: 20, color: Colors.indigo)),
-                Text('Dart & Flutter',
-                    style: TextStyle(fontSize: 16, color: Colors.deepPurple)),
+                _buildRow(),
+                SizedBox(height: 10),
+                _buildRow(),
+                SizedBox(height: 10),
+                _buildRow(),
               ],
             )),
       ),
+    );
+  }
+
+  Widget _buildRow() {
+    return Row(
+      children: [
+        Image.network('https://picsum.photos/120/60'),
+        SizedBox(
+          width: 10,
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Hello, World!',
+                style: TextStyle(fontSize: 20, color: Colors.indigo)),
+            Text('Dart & Flutter',
+                style: TextStyle(fontSize: 16, color: Colors.deepPurple)),
+          ],
+        ),
+      ],
     );
   }
 }
