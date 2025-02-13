@@ -55,14 +55,12 @@ class _MyHomePageState extends State<MyHomePage> {
             width: 300,
             height: 380,
             color: Colors.white,
-            // ListView.builder 위젯: 동적 리스트를 생성하는 위젯
             child: ListView.builder(
               itemCount: 30,
               itemBuilder: (context, index) {
                 return _buildListItem();
               },
-            )
-            ),
+            )),
       ),
     );
   }
