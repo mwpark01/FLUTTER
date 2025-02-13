@@ -27,20 +27,37 @@ class MyGridView extends StatelessWidget {
             ),
             // 총 아이템의 갯수를 30개로 설정
             itemCount: 30,
+            
             // 각 아이템을 생성하는 함수
             itemBuilder: (context, index) {
+              // InkWell 위젯을 사용하여 터치 이벤트를 처리합니다.
+              return InkWell(
+              // 아이템을 터치했을 때의 동작을 정의합니다.
+              onTap: () {
+                // 콘솔에 'Item $index tapped'를 출력합니다.
+                debugPrint('Item $index tapped'); 
+                
+                // ScaffoldMessenger를 사용하여 스낵바를 표시합니다.
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Item $index tapped'),
+                  ),
+                );
+              },
+              
               // 각 아이템은 Container 위젯으로 생성
-              return Container(
+              child: Container(
                 // 아이템의 배경색을 설정
                 color: Colors.blue[100 * (index % 9)],
                 // 아이템의 텍스트를 중앙에 표시
                 child: Center(
                   // 아이템의 텍스트를 표시
                   child: Text('Item $index'),
-                ),
-              );
-            },
-          ),
+                 ),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
