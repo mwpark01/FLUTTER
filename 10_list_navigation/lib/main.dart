@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
 
-// import 'my_list_view.dart';
+// 그리드 뷰
+import 'my_grid_view.dart';
 
+// 리스트 뷰
+import 'my_list_view.dart';
+
+// 슬리버 리스트 뷰
+// 스크롤 가능한 큰 데이터들을 효율적으로 처리
+// 화면에 보이는 부분만 렌더링하여 성능 최적화 <-> 리스트 뷰(성능 저하 발생)
+// 스크롤에 반응하는 위젯을 만들 때 사용 
+import 'my_sliver_list_view.dart';
+
+// 입력창 뷰
 import 'text_field_demo.dart';
 
 import 'package:list_navigation/shared_preference.dart';
@@ -21,7 +32,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SharedPreference(),
+      home: MySliverList(),
     );
   }
 }
