@@ -1,3 +1,4 @@
+// Flutter UI 라이브러리 
 import 'package:flutter/material.dart';
 
 // 메인 함수
@@ -10,20 +11,21 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
+  // 위젯을 생성하는 build 함수
   Widget build(BuildContext context) {
+    // 엡의 기본구조 제공
     return MaterialApp(
+      // 앱의 제목 설정
       title: 'Flutter Demo',
-      // 테마 설정
+      // 앱의 테마 설정
       theme: ThemeData(
         // 색상 스키마 설정
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         // 머테리얼 3.0 테마 설정
         useMaterial3: true,
       ),
-      // 홈 페이지 설정
-      // 타이틀 파라미터 전달
+      // 앱의 홈 화면을 MyHomePage 위젯으로 설정
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -55,8 +57,9 @@ class _MyHomePageState extends State<MyHomePage> {
   // build 함수: 위젯을 생성하는 함수
   @override
   Widget build(BuildContext context) {
-    // Scaffold 위젯: 머테리얼 디자인의 기본 레이아웃 구조를 제공
+    // Scaffold 위젯: 기본 레이아웃 구조를 제공
     return Scaffold(
+      // 앱 상단에 위치하는 툴바
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // title 속성에 Text 위젯을 사용하여 앱바에 표시할 텍스트를 설정
