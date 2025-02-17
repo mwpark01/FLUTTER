@@ -30,6 +30,9 @@ class MyDrawerWidget extends StatelessWidget {
             title: const Text('Drawer Item #1'),
             onTap: () {
               Navigator.of(context)
+              // push를 사용하게 되면 이전 화면을 스택에 쌓는다. -> 메모리 관리 필요!
+              // pushReplacement는 현재 화면을 교체하고 이전 화면을 버린다.
+              //.pushReplacement(MaterialPageRoute(builder: (context) => DemoPageOne()));
                   .push(MaterialPageRoute(builder: (context) => DemoPageOne()));
             }),
 
