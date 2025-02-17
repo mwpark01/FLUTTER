@@ -19,6 +19,8 @@ import 'package:list_navigation/shared_preference.dart';
 
 import 'navigator_demo.dart';
 
+import 'drawer_demo.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -34,7 +36,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: NavigatorDemo(),
+      home: DrawerDemo(),
     );
   }
 }
