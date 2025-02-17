@@ -17,6 +17,8 @@ import 'text_field_demo.dart';
 
 import 'package:list_navigation/shared_preference.dart';
 
+import 'navigator_demo.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MySliverList(),
+      home: NavigatorDemo(),
     );
   }
 }
