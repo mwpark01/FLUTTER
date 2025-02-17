@@ -21,6 +21,8 @@ import 'navigator_demo.dart';
 
 import 'drawer_demo.dart';
 
+import 'tab_demo.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -34,9 +36,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: DrawerDemo(),
+          useMaterial3: true,
+          // themeData의 tabBarTheme 속성을 사용하여 탭바의 색상을 변경
+          tabBarTheme: const TabBarTheme(
+            labelColor: Colors.amber,
+            // 탭 아래 표시 줄의 색상을 변경
+            indicatorColor: Colors.amber,
+          )),
+      home: TabDemo(),
     );
   }
 }
