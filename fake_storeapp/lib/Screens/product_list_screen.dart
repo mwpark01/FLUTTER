@@ -1,8 +1,10 @@
+import 'package:fake_storeapp/Widgets/shopping_cart.dart';
 import 'package:flutter/material.dart';
 
 import '../models/product.dart';
 import '../services/api_service.dart';
 import '../widgets/product_card.dart';
+
 
 class ProductListScreen extends StatefulWidget {
   const ProductListScreen({super.key});
@@ -24,13 +26,18 @@ class _ProductListScreenState extends State<ProductListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('상품 목록')),
+      appBar: AppBar(title: const Text('상품 목록'), actions: [ShoppingCart()]),
       body: Column(
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextField(
               decoration: const InputDecoration(hintText: '검색어를 입력하세요'),
+              onChanged: (text) {
+                setState(() {
+                  _searchText = text;
+                });
+              },
             ),
           ),
           Expanded(child: _buildProductList()),
@@ -50,6 +57,16 @@ class _ProductListScreenState extends State<ProductListScreen> {
           return Center(child: Text('Error: ${snapshot.error}'));
         }
         List products = snapshot.data as List<Product>;
+        if (_searchText.isNotEmpty) {
+          products =
+              products
+                  .where(
+                    (product) => product.title.toLowerCase().contains(
+                      _searchText.toLowerCase(),
+                    ),
+                  )
+                  .toList();
+        }
         return ListView.builder(
           itemCount: products.length,
           itemBuilder: (context, index) {
