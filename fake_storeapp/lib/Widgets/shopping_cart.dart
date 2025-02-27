@@ -1,3 +1,4 @@
+import 'package:fake_storeapp/Screens/cart_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -17,6 +18,9 @@ class ShoppingCart extends StatelessWidget {
               icon: const Icon(Icons.shopping_cart),
               onPressed: () {
                 // 장바구니 화면으로 이동
+                Navigator.of(
+                  context,
+                ).push(MaterialPageRoute(builder: (context) => CartScreen()));
               },
             ),
             if (cartProvider.itemCount > 0)
